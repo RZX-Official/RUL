@@ -1,37 +1,100 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقعي الشخصي</title>
-    <style>
-        body {
-            background-color: #0f172a;
-            color: #ffffff;
-            font-family: Tahoma, sans-serif;
-            text-align: center;
-            padding-top: 100px;
-        }
-        h1 {
-            color: #38bdf8;
-        }
-        .card {
-            background-color: #1e293b;
-            padding: 20px;
-            border-radius: 12px;
-            display: inline-block;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
-    </style>
+    <title>RTX - مرحباً بكم</title>
+    <!-- استدعاء ملف التصميم -->
+    <link rel="stylesheet" href="style.css">
+    <!-- استدعاء أيقونات Font Awesome (للأيقونات الحديثة) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <h1>أهلاً بك في موقعي الرسمي!</h1>
-    <div class="card">
-        <p>تم تصميم هذا الموقع ورفعـه مباشرة باستخدام الآيفون 📱💻</p>
-        <p>قريباً سيتم إضافة المزيد من التعديلات والمحتوى هنا.</p>
-    </div>
+    <!-- الهيدر (رأس الصفحة) -->
+    <header>
+        <div class="header-content">
+            <h1 class="logo">RTX</h1>
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i> <!-- أيقونة القائمة -->
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي للموقع -->
+    <main>
+        <!-- القسم العلوي (البطل) -->
+        <section class="hero">
+            <div class="hero-image">
+                <!-- شعار RTX الكبير (نص بتأثير متدرج) -->
+                <div class="rtx-large-logo">
+                    <span>R</span><span>T</span><span>X</span>
+                </div>
+            </div>
+            <h2 class="welcome-text">مرحباً بكم في موقع RTX</h2>
+        </section>
+
+        <!-- قسم البطاقات (iOS, Android, PC, المتجر) -->
+        <section class="services">
+            <!-- بطاقة تطبيقات iOS -->
+            <div class="service-card">
+                <div class="card-icon ios-icon">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <h3>تطبيقات iOS</h3>
+                <p>هاك روبلكس + روبلكس القديمة (بيوكورا)</p>
+                <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+            <!-- بطاقة تطبيقات Android -->
+            <div class="service-card">
+                <div class="card-icon android-icon">
+                    <i class="fab fa-android"></i>
+                </div>
+                <h3>تطبيقات Android</h3>
+                <p>هاك روبلكس + روبلكس القديمة (بيوكورا)</p>
+                <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+            <!-- بطاقة تطبيقات PC -->
+            <div class="service-card">
+                <div class="card-icon pc-icon">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <h3>تطبيقات PC</h3>
+                <p>هاك روبلكس + روبلكس القديمة (بيوكورا)</p>
+                <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+            <!-- بطاقة المتجر -->
+            <div class="service-card">
+                <div class="card-icon store-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>المتجر</h3>
+                <p>اختر دلتا للايفون لمدة سنة أو روبلكس بالأسعار المناسبة</p>
+                <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </section>
+
+        <!-- قسم أزرار الشبكات الاجتماعية -->
+        <section class="social-buttons">
+            <a href="#" class="social-btn discord-btn">
+                <i class="fab fa-discord"></i> ديسكورد
+            </a>
+            <a href="#" class="social-btn download-btn">
+                <i class="fas fa-download"></i> تنزيل الموقع
+            </a>
+            <a href="#" class="social-btn youtube-btn">
+                <i class="fab fa-youtube"></i> يوتيوب
+            </a>
+        </section>
+    </main>
+
+    <!-- الفوتر (أسفل الصفحة) -->
+    <footer>
+        <p>جميع الحقوق محفوظة © 2023 - 2026 RTX</p>
+    </footer>
 
 </body>
 </html>
