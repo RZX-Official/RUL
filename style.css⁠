@@ -1,0 +1,202 @@
+/* الأنماط العامة */
+body {
+    direction: rtl; /* اتجاه النص من اليمين إلى اليسار */
+    font-family: 'Arial', sans-serif; /* نوع الخط */
+    background-color: #0d1117; /* لون الخلفية الداكن */
+    color: #ffffff; /* لون النص الأبيض */
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* أنماط الهيدر */
+header {
+    background-color: #0d1117;
+    padding: 20px 0;
+    position: fixed; /* تثبيت الهيدر في الأعلى */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 2.5em;
+    font-weight: bold;
+    background: linear-gradient(to right, #ac58ff, #39d353); /* تدرج أرجواني إلى أخضر */
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.menu-icon i {
+    font-size: 1.8em;
+    color: #ac58ff; /* لون أيقونة القائمة */
+    cursor: pointer;
+}
+
+/* أنماط المحتوى الرئيسي */
+main {
+    padding-top: 100px; /* تباعد من الأعلى بسبب الهيدر المثبت */
+    padding-bottom: 50px;
+}
+
+/* أنماط قسم البطل */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 5%;
+}
+
+.hero-image {
+    background: radial-gradient(circle, #231238 0%, #0d1117 70%); /* خلفية متدرجة مركزية */
+    display: inline-block;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.rtx-large-logo {
+    font-size: 8em;
+    font-weight: bold;
+    color: #ffffff;
+    border: 5px solid #ffffff;
+    border-radius: 15px;
+    padding: 10px 30px;
+    display: inline-flex;
+    gap: 10px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.rtx-large-logo::after {
+    content: "R T X";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.25em;
+    letter-spacing: 5px;
+    color: #b0c4de;
+}
+
+.welcome-text {
+    font-size: 2em;
+    font-weight: bold;
+    background: linear-gradient(to right, #39d353, #ac58ff); /* تدرج أخضر إلى أرجواني */
+    -webkit-background-clip: text;
+    color: transparent;
+    margin: 0;
+}
+
+/* أنماط قسم البطاقات */
+.services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 5%;
+}
+
+.service-card {
+    background-color: #1a222f; /* لون خلفية البطاقة */
+    border: 2px solid;
+    border-image: linear-gradient(to bottom, #ac58ff, #39d353) 1; /* حافة متدرجة */
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon i {
+    font-size: 4em;
+    margin-bottom: 15px;
+    background: linear-gradient(to right, #ac58ff, #39d353); /* أيقونة متدرجة */
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.service-card h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.service-card p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #b0c4de; /* لون النص الجانبي */
+}
+
+.card-button {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #ffffff;
+    background: linear-gradient(to right, #ac58ff, #39d353); /* زر متدرج */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-button i {
+    margin-right: 5px; /* تباعد السهم عن النص */
+}
+
+/* أنماط قسم الأزرار الاجتماعية */
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 50px;
+    padding: 0 5%;
+}
+
+.social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    padding: 18px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+.social-btn i {
+    font-size: 1.5em;
+    margin-left: 10px; /* تباعد الأيقونة عن النص */
+}
+
+.discord-btn {
+    background: linear-gradient(to right, #5865F2, #404eed); /* لون ديسكورد */
+}
+
+.download-btn {
+    background: linear-gradient(to right, #00B5E2, #0087a9); /* لون التنزيل */
+}
+
+.youtube-btn {
+    background: linear-gradient(to right, #FF0000, #cc0000); /* لون يوتيوب */
+}
+
+/* أنماط الفوتر */
+footer {
+    background-color: #0d1117;
+    padding: 20px 0;
+    text-align: center;
+    color: #8b949e;
+}
