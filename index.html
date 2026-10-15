@@ -4,39 +4,205 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RTX - مرحباً بكم</title>
-    <!-- استدعاء ملف التصميم -->
-    <link rel="stylesheet" href="style.css">
-    <!-- استدعاء أيقونات Font Awesome (للأيقونات الحديثة) -->
+    <!-- استدعاء أيقونات Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* الأنماط العامة */
+        body {
+            direction: rtl;
+            font-family: 'Arial', sans-serif;
+            background-color: #0d1117;
+            color: #ffffff;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        header {
+            background-color: #0d1117;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(to right, #ac58ff, #39d353);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .menu-icon i {
+            font-size: 1.8em;
+            color: #ac58ff;
+            cursor: pointer;
+        }
+        main {
+            padding-top: 100px;
+            padding-bottom: 50px;
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 5%;
+        }
+        .hero-image {
+            background: radial-gradient(circle, #231238 0%, #0d1117 70%);
+            display: inline-block;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .rtx-large-logo {
+            font-size: 8em;
+            font-weight: bold;
+            color: #ffffff;
+            border: 5px solid #ffffff;
+            border-radius: 15px;
+            padding: 10px 30px;
+            display: inline-flex;
+            gap: 10px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .rtx-large-logo::after {
+            content: "R T X";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.25em;
+            letter-spacing: 5px;
+            color: #b0c4de;
+        }
+        .welcome-text {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(to right, #39d353, #ac58ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 0;
+        }
+        .services {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 0 5%;
+        }
+        .service-card {
+            background-color: #1a222f;
+            border: 2px solid;
+            border-image: linear-gradient(to bottom, #ac58ff, #39d353) 1;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            max-width: 90%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .card-icon i {
+            font-size: 4em;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ac58ff, #39d353);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .service-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        .service-card p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #b0c4de;
+        }
+        .card-button {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #ffffff;
+            background: linear-gradient(to right, #ac58ff, #39d353);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .card-button i {
+            margin-right: 5px;
+        }
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 50px;
+            padding: 0 5%;
+        }
+        .social-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            padding: 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.3em;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+        .social-btn i {
+            font-size: 1.5em;
+            margin-left: 10px;
+        }
+        .discord-btn {
+            background: linear-gradient(to right, #5865F2, #404eed);
+        }
+        .download-btn {
+            background: linear-gradient(to right, #00B5E2, #0087a9);
+        }
+        .youtube-btn {
+            background: linear-gradient(to right, #FF0000, #cc0000);
+        }
+        footer {
+            background-color: #0d1117;
+            padding: 20px 0;
+            text-align: center;
+            color: #8b949e;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- الهيدر (رأس الصفحة) -->
     <header>
         <div class="header-content">
             <h1 class="logo">RTX</h1>
             <div class="menu-icon">
-                <i class="fas fa-bars"></i> <!-- أيقونة القائمة -->
+                <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
-
-    <!-- المحتوى الرئيسي للموقع -->
     <main>
-        <!-- القسم العلوي (البطل) -->
         <section class="hero">
             <div class="hero-image">
-                <!-- شعار RTX الكبير (نص بتأثير متدرج) -->
                 <div class="rtx-large-logo">
                     <span>R</span><span>T</span><span>X</span>
                 </div>
             </div>
             <h2 class="welcome-text">مرحباً بكم في موقع RTX</h2>
         </section>
-
-        <!-- قسم البطاقات (iOS, Android, PC, المتجر) -->
         <section class="services">
-            <!-- بطاقة تطبيقات iOS -->
             <div class="service-card">
                 <div class="card-icon ios-icon">
                     <i class="fab fa-apple"></i>
@@ -45,8 +211,6 @@
                 <p>هاك روبلكس + روبلكس القديمة (بيوكورا)</p>
                 <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
             </div>
-
-            <!-- بطاقة تطبيقات Android -->
             <div class="service-card">
                 <div class="card-icon android-icon">
                     <i class="fab fa-android"></i>
@@ -55,8 +219,6 @@
                 <p>هاك روبلكس + روبلكس القديمة (بيوكورا)</p>
                 <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
             </div>
-
-            <!-- بطاقة تطبيقات PC -->
             <div class="service-card">
                 <div class="card-icon pc-icon">
                     <i class="fas fa-desktop"></i>
@@ -65,8 +227,6 @@
                 <p>هاك روبلكس + روبلكس القديمة (بيوكورا)</p>
                 <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
             </div>
-
-            <!-- بطاقة المتجر -->
             <div class="service-card">
                 <div class="card-icon store-icon">
                     <i class="fas fa-shopping-cart"></i>
@@ -76,8 +236,6 @@
                 <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
             </div>
         </section>
-
-        <!-- قسم أزرار الشبكات الاجتماعية -->
         <section class="social-buttons">
             <a href="#" class="social-btn discord-btn">
                 <i class="fab fa-discord"></i> ديسكورد
@@ -90,11 +248,8 @@
             </a>
         </section>
     </main>
-
-    <!-- الفوتر (أسفل الصفحة) -->
     <footer>
         <p>جميع الحقوق محفوظة © 2023 - 2026 RTX</p>
     </footer>
-
 </body>
 </html>
