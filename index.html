@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +7,29 @@
     <!-- استدعاء أيقونات Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* الأنماط العامة */
+        /* إصلاحات عامة ومنع مشاكل التخطيط على الجوال */
+        * {
+            box-sizing: border-box;
+        }
         body {
             direction: rtl;
             font-family: 'Arial', sans-serif;
             background-color: #0d1117;
             color: #ffffff;
             margin: 0;
+            padding: 0;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
         header {
             background-color: #0d1117;
-            padding: 20px 0;
+            padding: 15px 0;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            border-bottom: 1px solid #21262d;
         }
         .header-content {
             display: flex;
@@ -33,106 +39,110 @@
             margin: 0 auto;
         }
         .logo {
-            font-size: 2.5em;
+            font-size: 2.2em;
             font-weight: bold;
             background: linear-gradient(to right, #ac58ff, #39d353);
             -webkit-background-clip: text;
             color: transparent;
+            margin: 0;
         }
         .menu-icon i {
-            font-size: 1.8em;
+            font-size: 1.6em;
             color: #ac58ff;
             cursor: pointer;
         }
         main {
-            padding-top: 100px;
-            padding-bottom: 50px;
+            padding-top: 90px;
+            padding-bottom: 40px;
         }
         .hero {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             padding: 0 5%;
         }
         .hero-image {
             background: radial-gradient(circle, #231238 0%, #0d1117 70%);
             display: inline-block;
-            padding: 20px;
+            padding: 15px;
             border-radius: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            max-width: 100%;
         }
         .rtx-large-logo {
-            font-size: 8em;
+            font-size: clamp(4rem, 15vw, 6rem);
             font-weight: bold;
             color: #ffffff;
-            border: 5px solid #ffffff;
+            border: 4px solid #ffffff;
             border-radius: 15px;
-            padding: 10px 30px;
+            padding: 5px 20px;
             display: inline-flex;
-            gap: 10px;
+            gap: 15px;
             position: relative;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
         }
         .rtx-large-logo::after {
-            content: "R T X";
+            content: "R U L";
             position: absolute;
-            bottom: -20px;
+            bottom: -18px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.25em;
-            letter-spacing: 5px;
+            font-size: 0.22em;
+            letter-spacing: 4px;
             color: #b0c4de;
+            background-color: #0d1117;
+            padding: 0 10px;
         }
         .welcome-text {
-            font-size: 2em;
+            font-size: 1.6em;
             font-weight: bold;
             background: linear-gradient(to right, #39d353, #ac58ff);
             -webkit-background-clip: text;
             color: transparent;
-            margin: 0;
+            margin: 15px 0 0 0;
         }
         .services {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 18px;
             padding: 0 5%;
+            width: 100%;
         }
         .service-card {
             background-color: #1a222f;
             border: 2px solid;
             border-image: linear-gradient(to bottom, #ac58ff, #39d353) 1;
             border-radius: 15px;
-            padding: 25px;
+            padding: 20px;
             text-align: center;
-            max-width: 90%;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             width: 100%;
-            box-sizing: border-box;
+            max-width: 450px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
         .card-icon i {
-            font-size: 4em;
-            margin-bottom: 15px;
+            font-size: 3em;
+            margin-bottom: 10px;
             background: linear-gradient(to right, #ac58ff, #39d353);
             -webkit-background-clip: text;
             color: transparent;
         }
         .service-card h3 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
+            font-size: 1.5em;
+            margin: 0 0 8px 0;
             color: #ffffff;
         }
         .service-card p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
+            font-size: 1em;
+            margin: 0 0 15px 0;
             color: #b0c4de;
         }
         .card-button {
             display: inline-block;
-            padding: 12px 25px;
+            padding: 10px 22px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1em;
             color: #ffffff;
             background: linear-gradient(to right, #ac58ff, #39d353);
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -144,27 +154,28 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
-            margin-top: 50px;
+            gap: 12px;
+            margin-top: 35px;
             padding: 0 5%;
+            width: 100%;
         }
         .social-btn {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 90%;
-            padding: 18px;
+            width: 100%;
+            max-width: 450px;
+            padding: 15px;
             border-radius: 10px;
             font-weight: bold;
-            font-size: 1.3em;
+            font-size: 1.2em;
             text-decoration: none;
             border: none;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             color: #ffffff;
-            box-sizing: border-box;
         }
         .social-btn i {
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin-left: 10px;
         }
         .discord-btn {
@@ -181,13 +192,16 @@
             padding: 20px 0;
             text-align: center;
             color: #8b949e;
+            font-size: 0.9em;
+            border-top: 1px solid #21262d;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <h1 class="logo">RTX</h1>
+            <h1 class="logo">RUL</h1>
             <div class="menu-icon">
                 <i class="fas fa-bars"></i>
             </div>
@@ -197,7 +211,7 @@
         <section class="hero">
             <div class="hero-image">
                 <div class="rtx-large-logo">
-                    <span>R</span><span>T</span><span>X</span>
+                    <span>R</span><span>U</span><span>L</span>
                 </div>
             </div>
             <h2 class="welcome-text">مرحباً بكم في موقع RUL</h2>
@@ -237,7 +251,8 @@
             </div>
         </section>
         <section class="social-buttons">
-            <a href="#" class="social-btn discord-btn">
+            <!-- استبدل رابط ديسكورد أدناه برابط سيرفرك الفعلي -->
+            <a href="https://discord.gg/https://discord.gg/aJu26vNGgS" target="_blank" class="social-btn discord-btn">
                 <i class="fab fa-discord"></i> ديسكورد
             </a>
             <a href="#" class="social-btn download-btn">
@@ -249,7 +264,7 @@
         </section>
     </main>
     <footer>
-        <p>جميع الحقوق محفوظة © 2023 - 2026 RUL</p>
+        <p>جميع الحقوق محفوظة © 2026 RUL</p>
     </footer>
 </body>
 </html>
