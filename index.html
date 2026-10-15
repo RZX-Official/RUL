@@ -60,36 +60,19 @@
             padding: 0 5%;
         }
         .hero-image {
-            background: radial-gradient(circle, #231238 0%, #0d1117 70%);
             display: inline-block;
-            padding: 15px;
-            border-radius: 20px;
             margin-bottom: 15px;
             max-width: 100%;
         }
-        .rtx-large-logo {
-            font-size: clamp(4rem, 15vw, 6rem);
-            font-weight: bold;
-            color: #ffffff;
-            border: 4px solid #c084fc;
+        .hero-image img {
+            width: 100%;
+            max-width: 340px;
+            height: auto;
             border-radius: 15px;
-            padding: 5px 20px;
-            display: inline-flex;
-            gap: 15px;
-            position: relative;
-            box-shadow: 0 4px 20px rgba(147, 51, 234, 0.4);
-        }
-        .rtx-large-logo::after {
-            content: "R U L";
-            position: absolute;
-            bottom: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.22em;
-            letter-spacing: 4px;
-            color: #d8b4fe;
-            background-color: #0d1117;
-            padding: 0 10px;
+            border: 3px solid #c084fc;
+            box-shadow: 0 4px 20px rgba(147, 51, 234, 0.5);
+            display: block;
+            margin: 0 auto;
         }
         .welcome-text {
             font-size: 1.6em;
@@ -206,9 +189,8 @@
     <main>
         <section class="hero">
             <div class="hero-image">
-                <div class="rtx-large-logo">
-                    <span>R</span><span>U</span><span>L</span>
-                </div>
+                <!-- إضافة ?v=2 لتجاوز الذاكرة المؤقتة للمتصفح -->
+                <img src="logo.png?v=2" alt="RUL Logo">
             </div>
             <h2 class="welcome-text">مرحباً بكم في موقع RUL</h2>
         </section>
