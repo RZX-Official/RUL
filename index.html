@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUL - مرحباً بكم</title>
+    <title>RUL - سكربتات</title>
     <!-- استدعاء أيقونات Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -67,15 +67,9 @@
         
         /* تأثير الطفو الفضائي البطيء */
         @keyframes spaceFloat {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         .hero-image img {
@@ -134,6 +128,8 @@
             margin: 0 0 15px 0;
             color: #d8b4fe;
         }
+        
+        /* تنسيق زر السكربت */
         .card-button {
             display: inline-block;
             padding: 10px 22px;
@@ -144,6 +140,12 @@
             color: #ffffff;
             background: linear-gradient(to right, #a855f7, #7e22ce);
             box-shadow: 0 2px 6px rgba(168, 85, 247, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .card-button:hover {
+            transform: scale(1.05);
         }
         .card-button i {
             margin-right: 5px;
@@ -209,49 +211,24 @@
             </div>
             <h2 class="welcome-text">مرحباً بكم في موقع RUL</h2>
         </section>
+        
         <section class="services">
-            <!-- بطاقة تطبيقات iOS -->
-            <div class="service-card">
-                <div class="card-icon ios-icon">
-                    <i class="fab fa-apple"></i>
-                </div>
-                <h3>تطبيقات iOS</h3>
-                <p>هاك روبلكس + روبلكس القديمة (بيوكورا)</p>
-                <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
-            </div>
-
-            <!-- بطاقة تطبيقات Android -->
-            <div class="service-card">
-                <div class="card-icon android-icon">
-                    <i class="fab fa-android"></i>
-                </div>
-                <h3>تطبيقات Android</h3>
-                <p>هاك روبلكس + روبلكس القديمة (بيوكورا)</p>
-                <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
-            </div>
-
-            <!-- بطاقة تطبيقات PC -->
-            <div class="service-card">
-                <div class="card-icon pc-icon">
-                    <i class="fas fa-desktop"></i>
-                </div>
-                <h3>تطبيقات PC</h3>
-                <p>هاك روبلكس + روبلكس القديمة (بيوكورا)</p>
-                <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
-            </div>
-
-            <!-- بطاقة سكربتات -->
+            <!-- بطاقة سكربتات فقط -->
             <div class="service-card">
                 <div class="card-icon">
                     <i class="fas fa-code"></i>
                 </div>
                 <h3>سكربتات</h3>
                 <p>جميع السكربت لكل المابات تقريبا فيه</p>
-                <a href="#" class="card-button">انقر للضغط <i class="fas fa-chevron-right"></i></a>
+                <!-- تم تحويل الزر إلى زر نسخ -->
+                <button onclick="copyScript()" class="card-button">
+                    انسخ السكربت <i class="fas fa-copy"></i>
+                </button>
             </div>
         </section>
+
         <section class="social-buttons">
-            <!-- زر الديسكورد مع سيرفرك -->
+            <!-- أزرار التواصل الاجتماعي (إذا كنت تبي تخفيها هم، احذف هذا القسم كامل) -->
             <a href="https://discord.gg/aJu26vNGgS" target="_blank" class="social-btn discord-btn">
                 <i class="fab fa-discord"></i> ديسكورد
             </a>
@@ -263,5 +240,29 @@
     <footer>
         <p>جميع الحقوق محفوظة © 2026 RUL</p>
     </footer>
+
+    <!-- سكربت النسخ (Base64) -->
+    <script>
+        function copyScript() {
+            // ⚠️ هنا تحط النص المشفر بـ Base64 للسكربت حقك
+            // (اللي طلعته من موقع base64encode.org)
+            
+            const encodedScript = "ضع_النص_المشفر_هنا"; 
+            
+            try {
+                // فك التشفير
+                const decodedScript = atob(encodedScript);
+                
+                // نسخ للحافظة
+                navigator.clipboard.writeText(decodedScript).then(() => {
+                    alert('✅ تم نسخ السكربت بنجاح!');
+                }).catch(err => {
+                    alert('❌ فشل في النسخ، يرجى المحاولة يدوياً.');
+                });
+            } catch (error) {
+                alert('❌ حدث خطأ في السكربت. تأكد من أن النص مشفر بشكل صحيح.');
+            }
+        }
+    </script>
 </body>
 </html>
