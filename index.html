@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUL - سكربتات</title>
-    <!-- استدعاء أيقونات Font Awesome -->
+    <title>RUL - مرحباً بكم</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
         body {
             direction: rtl;
             font-family: 'Arial', sans-serif;
@@ -17,8 +14,6 @@
             color: #ffffff;
             margin: 0;
             padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
         header {
@@ -45,11 +40,6 @@
             color: transparent;
             margin: 0;
         }
-        .menu-icon i {
-            font-size: 1.6em;
-            color: #c084fc;
-            cursor: pointer;
-        }
         main {
             padding-top: 90px;
             padding-bottom: 40px;
@@ -64,14 +54,11 @@
             margin-bottom: 15px;
             max-width: 100%;
         }
-        
-        /* تأثير الطفو الفضائي البطيء */
         @keyframes spaceFloat {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-
         .hero-image img {
             width: 210px;
             height: 210px;
@@ -83,7 +70,6 @@
             margin: 0 auto;
             animation: spaceFloat 4s ease-in-out infinite;
         }
-
         .welcome-text {
             font-size: 1.6em;
             font-weight: bold;
@@ -94,9 +80,7 @@
         }
         .services {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 18px;
+            justify-content: center;
             padding: 0 5%;
             width: 100%;
         }
@@ -105,7 +89,7 @@
             border: 2px solid;
             border-image: linear-gradient(to bottom, #c084fc, #7e22ce) 1;
             border-radius: 15px;
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
             width: 100%;
             max-width: 450px;
@@ -118,72 +102,23 @@
             -webkit-background-clip: text;
             color: transparent;
         }
-        .service-card h3 {
-            font-size: 1.5em;
-            margin: 0 0 8px 0;
-            color: #ffffff;
-        }
-        .service-card p {
-            font-size: 1em;
-            margin: 0 0 15px 0;
-            color: #d8b4fe;
-        }
+        .service-card h3 { font-size: 1.5em; margin: 0 0 8px 0; color: #ffffff; }
+        .service-card p { font-size: 1em; margin: 0 0 20px 0; color: #d8b4fe; }
         
-        /* تنسيق زر السكربت */
+        /* زر الدخول لصفحة السكربتات */
         .card-button {
             display: inline-block;
-            padding: 10px 22px;
+            padding: 12px 30px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1em;
+            font-size: 1.1em;
             color: #ffffff;
             background: linear-gradient(to right, #a855f7, #7e22ce);
             box-shadow: 0 2px 6px rgba(168, 85, 247, 0.4);
-            border: none;
-            cursor: pointer;
             transition: transform 0.2s;
         }
-        .card-button:hover {
-            transform: scale(1.05);
-        }
-        .card-button i {
-            margin-right: 5px;
-        }
-        .social-buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            margin-top: 35px;
-            padding: 0 5%;
-            width: 100%;
-        }
-        .social-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            max-width: 450px;
-            padding: 15px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1.2em;
-            text-decoration: none;
-            border: none;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            color: #ffffff;
-        }
-        .social-btn i {
-            font-size: 1.4em;
-            margin-left: 10px;
-        }
-        .discord-btn {
-            background: linear-gradient(to right, #5865F2, #404eed);
-        }
-        .youtube-btn {
-            background: linear-gradient(to right, #FF0000, #cc0000);
-        }
+        .card-button:hover { transform: scale(1.05); }
         footer {
             background-color: #0d1117;
             padding: 20px 0;
@@ -191,7 +126,10 @@
             color: #8b949e;
             font-size: 0.9em;
             border-top: 1px solid #21262d;
-            margin-top: 30px;
+            margin-top: 50px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -199,11 +137,9 @@
     <header>
         <div class="header-content">
             <h1 class="logo">RUL</h1>
-            <div class="menu-icon">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </header>
+    
     <main>
         <section class="hero">
             <div class="hero-image">
@@ -218,51 +154,17 @@
                 <div class="card-icon">
                     <i class="fas fa-code"></i>
                 </div>
-                <h3>سكربتات</h3>
-                <p>جميع السكربت لكل المابات تقريبا فيه</p>
-                <!-- تم تحويل الزر إلى زر نسخ -->
-                <button onclick="copyScript()" class="card-button">
-                    انسخ السكربت <i class="fas fa-copy"></i>
-                </button>
+                <h3>مكتبة السكربتات</h3>
+                <p>اضغط للدخول والبحث عن المابات</p>
+                
+                <!-- 🌟 هنا الرابط المهم اللي ينقلك للصفحة الثانية 🌟 -->
+                <a href="scripts.html" class="card-button">دخول للمكتبة <i class="fas fa-chevron-left"></i></a>
             </div>
         </section>
-
-        <section class="social-buttons">
-            <!-- أزرار التواصل الاجتماعي (إذا كنت تبي تخفيها هم، احذف هذا القسم كامل) -->
-            <a href="https://discord.gg/aJu26vNGgS" target="_blank" class="social-btn discord-btn">
-                <i class="fab fa-discord"></i> ديسكورد
-            </a>
-            <a href="#" class="social-btn youtube-btn">
-                <i class="fab fa-youtube"></i> يوتيوب
-            </a>
-        </section>
     </main>
+
     <footer>
         <p>جميع الحقوق محفوظة © 2026 RUL</p>
     </footer>
-
-    <!-- سكربت النسخ (Base64) -->
-    <script>
-        function copyScript() {
-            // ⚠️ هنا تحط النص المشفر بـ Base64 للسكربت حقك
-            // (اللي طلعته من موقع base64encode.org)
-            
-            const encodedScript = "ضع_النص_المشفر_هنا"; 
-            
-            try {
-                // فك التشفير
-                const decodedScript = atob(encodedScript);
-                
-                // نسخ للحافظة
-                navigator.clipboard.writeText(decodedScript).then(() => {
-                    alert('✅ تم نسخ السكربت بنجاح!');
-                }).catch(err => {
-                    alert('❌ فشل في النسخ، يرجى المحاولة يدوياً.');
-                });
-            } catch (error) {
-                alert('❌ حدث خطأ في السكربت. تأكد من أن النص مشفر بشكل صحيح.');
-            }
-        }
-    </script>
 </body>
 </html>
