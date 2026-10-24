@@ -28,8 +28,8 @@
         .modal-title { font-size: 1.8em; margin-bottom: 5px; color: #c084fc; }
         .modal-desc { color: #8b949e; margin-bottom: 20px; font-size: 0.9em; }
         .script-item { background-color: #1a1528; border: 1px solid #2d2d3f; border-radius: 10px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-        .script-item span { font-weight: bold; }
-        .copy-btn { background: linear-gradient(to right, #a855f7, #7e22ce); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .script-item span { font-weight: bold; font-size: 0.95em; }
+        .copy-btn { background: linear-gradient(to right, #a855f7, #7e22ce); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; white-space: nowrap; margin-right: 10px; }
         .copy-btn:hover { transform: scale(1.05); }
     </style>
 </head>
@@ -58,21 +58,8 @@
     </div>
 
     <script>
-        // 🛑 هذا هو المكان اللي تتحكم فيه بالمابات والسكربتات 🛑
+        // قاعدة البيانات (المابات والسكربتات) - السكربتات هنا نص عادي بدون تشفير
         const mapsDatabase = [
-            {
-                id: "duban",
-                name: "صيد الضبان",
-                desc: "لعبة صيد وتجارة الضبان في الصحراء",
-                famous: true, // true تعني أنه سيظهر عليه شارة (مشهور)
-                scripts: [
-                    {
-                        title: "سكربت Auto Farm",
-                        // 👇 هنا تحط النص المشفر حق السكربت 👇
-                        code: "cHJpbnQoItmF2LHZhtio2KciKQ==" 
-                    }
-                ]
-            },
             {
                 id: "bloxfruits",
                 name: "Blox Fruits",
@@ -80,14 +67,38 @@
                 famous: true,
                 scripts: [
                     {
-                        title: "سكربت Redz Hub",
-                        code: "cHJpbnQoItmF2LHZhtio2KciKQ==" 
+                        title: "Quantum Onyx Hub",
+                        code: 'loadstring(game:HttpGet("https://gist.githubusercontent.com/sheshiidriz-netizen/b880b0c514479292c62a95457031709a/raw"))()'
+                    },
+                    {
+                        title: "VoidHub",
+                        code: 'loadstring(game:HttpGet("https://www.voidon.top/api/loader"))()'
+                    },
+                    {
+                        title: "ARC HUB",
+                        code: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/bloxfruitsnokey/Arcylic/refs/heads/main/ARC/update.luau"))()'
+                    },
+                    {
+                        title: "KillAura & Auto Quests",
+                        code: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/AustinScripts189/jb/refs/heads/main/rob.lua"))()'
+                    }
+                ]
+            },
+            {
+                id: "duban",
+                name: "صيد الضبان",
+                desc: "لعبة صيد وتجارة الضبان في الصحراء",
+                famous: true,
+                scripts: [
+                    {
+                        title: "سكربت صيد الضبان",
+                        code: 'print("حط كود صيد الضبان هنا")'
                     }
                 ]
             }
         ];
 
-        // كود التشغيل (لا تعدل عليه)
+        // دالة عرض المابات
         function displayMaps(maps) {
             const grid = document.getElementById('mapGrid');
             grid.innerHTML = ''; 
@@ -105,12 +116,14 @@
             });
         }
 
+        // دالة البحث
         function searchMaps() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const filteredMaps = mapsDatabase.filter(map => map.name.toLowerCase().includes(searchTerm));
             displayMaps(filteredMaps);
         }
 
+        // فتح النافذة
         function openModal(mapId) {
             const map = mapsDatabase.find(m => m.id === mapId);
             if(!map) return;
@@ -118,31 +131,48 @@
             document.getElementById('modalDesc').innerText = map.desc;
             const scriptsContainer = document.getElementById('modalScripts');
             scriptsContainer.innerHTML = '';
-            map.scripts.forEach((script, index) => {
+            
+            map.scripts.forEach((script) => {
                 const scriptDiv = document.createElement('div');
                 scriptDiv.className = 'script-item';
-                scriptDiv.innerHTML = `<span>${script.title}</span><button class="copy-btn" onclick="copyScript('${script.code}')">نسخ <i class="fas fa-copy"></i></button>`;
+                
+                // إنشاء اسم السكربت
+                const titleSpan = document.createElement('span');
+                titleSpan.innerText = script.title;
+                
+                // إنشاء زر النسخ
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'copy-btn';
+                copyBtn.innerHTML = 'نسخ <i class="fas fa-copy"></i>';
+                
+                // ربط الزر بالكود مباشرة بدون مشاكل علامات التنصيص
+                copyBtn.onclick = () => copyScript(script.code);
+                
+                scriptDiv.appendChild(titleSpan);
+                scriptDiv.appendChild(copyBtn);
                 scriptsContainer.appendChild(scriptDiv);
             });
             document.getElementById('mapModal').style.display = 'flex';
         }
 
+        // إغلاق النافذة
         function closeModal() {
             document.getElementById('mapModal').style.display = 'none';
         }
 
-        function copyScript(encodedCode) {
-            try {
-                const decodedCode = atob(encodedCode);
-                navigator.clipboard.writeText(decodedCode).then(() => {
-                    alert('✅ تم نسخ السكربت بنجاح!');
-                });
-            } catch (e) {
-                alert('❌ خطأ في السكربت (تأكد من تشفير Base64).');
-            }
+        // دالة النسخ (الآن تنسخ النص مباشرة كما هو)
+        function copyScript(scriptCode) {
+            navigator.clipboard.writeText(scriptCode).then(() => {
+                alert('✅ تم نسخ السكربت بنجاح! الصقه في Delta.');
+            }).catch(err => {
+                alert('❌ فشل النسخ، جرب تضغط مطولاً وتنسخه يدوياً.');
+            });
         }
 
+        // تشغيل الموقع
         window.onload = () => displayMaps(mapsDatabase);
+
+        // إغلاق النافذة عند الضغط في الخارج
         window.onclick = function(event) {
             const modal = document.getElementById('mapModal');
             if (event.target == modal) closeModal();
