@@ -7,161 +7,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; }
-        body {
-            direction: rtl;
-            font-family: 'Arial', sans-serif;
-            background-color: #0d1117;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #0d1117;
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid #21262d;
-        }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 90%;
-            margin: 0 auto;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .logo {
-            font-size: 2em;
-            font-weight: bold;
-            background: linear-gradient(to right, #d8b4fe, #9333ea);
-            -webkit-background-clip: text;
-            color: transparent;
-            margin: 0;
-            text-decoration: none;
-        }
-        .search-container {
-            flex-grow: 1;
-            max-width: 500px;
-            position: relative;
-        }
-        .search-container input {
-            width: 100%;
-            padding: 12px 40px 12px 15px;
-            border-radius: 25px;
-            border: 2px solid #2d2d3f;
-            background-color: #1a1528;
-            color: white;
-            font-size: 1em;
-            outline: none;
-            transition: 0.3s;
-        }
-        .search-container input:focus {
-            border-color: #c084fc;
-            box-shadow: 0 0 10px rgba(192, 132, 252, 0.3);
-        }
-        .search-container i {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #c084fc;
-        }
-        main {
-            padding-top: 120px;
-            padding-bottom: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
-        .map-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .map-card {
-            background-color: #1a1528;
-            border: 2px solid #2d2d3f;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
-            position: relative;
-        }
-        .map-card:hover {
-            border-color: #c084fc;
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(147, 51, 234, 0.3);
-        }
-        .badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(to right, #a855f7, #7e22ce);
-            font-size: 0.7em;
-            padding: 3px 8px;
-            border-radius: 10px;
-        }
+        body { direction: rtl; font-family: 'Arial', sans-serif; background-color: #0d1117; color: #ffffff; margin: 0; padding: 0; }
+        header { background-color: #0d1117; padding: 15px 0; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid #21262d; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 90%; margin: 0 auto; flex-wrap: wrap; gap: 15px; }
+        .logo { font-size: 2em; font-weight: bold; background: linear-gradient(to right, #d8b4fe, #9333ea); -webkit-background-clip: text; color: transparent; margin: 0; text-decoration: none; }
+        .search-container { flex-grow: 1; max-width: 500px; position: relative; }
+        .search-container input { width: 100%; padding: 12px 40px 12px 15px; border-radius: 25px; border: 2px solid #2d2d3f; background-color: #1a1528; color: white; font-size: 1em; outline: none; transition: 0.3s; }
+        .search-container input:focus { border-color: #c084fc; box-shadow: 0 0 10px rgba(192, 132, 252, 0.3); }
+        .search-container i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #c084fc; }
+        main { padding-top: 120px; padding-bottom: 40px; max-width: 1200px; margin: 0 auto; padding-left: 5%; padding-right: 5%; }
+        .map-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .map-card { background-color: #1a1528; border: 2px solid #2d2d3f; border-radius: 15px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; position: relative; }
+        .map-card:hover { border-color: #c084fc; transform: translateY(-5px); box-shadow: 0 5px 15px rgba(147, 51, 234, 0.3); }
+        .badge { position: absolute; top: 10px; right: 10px; background: linear-gradient(to right, #a855f7, #7e22ce); font-size: 0.7em; padding: 3px 8px; border-radius: 10px; }
         .map-card h3 { margin: 0 0 10px 0; font-size: 1.3em; }
         .map-card p { color: #8b949e; font-size: 0.9em; margin: 0; }
-
-        /* النافذة المنبثقة (Modal) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-        }
-        .modal-content {
-            background-color: #0d1117;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 15px;
-            border: 2px solid #c084fc;
-            padding: 20px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-        }
-        .close-btn {
-            position: absolute;
-            top: 15px; left: 15px;
-            background: none; border: none;
-            color: #ff4d4d; font-size: 1.5em;
-            cursor: pointer;
-        }
-        .modal-title {
-            font-size: 1.8em; margin-bottom: 5px; color: #c084fc;
-        }
-        .modal-desc {
-            color: #8b949e; margin-bottom: 20px; font-size: 0.9em;
-        }
-        .script-item {
-            background-color: #1a1528;
-            border: 1px solid #2d2d3f;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        .modal-content { background-color: #0d1117; width: 90%; max-width: 600px; border-radius: 15px; border: 2px solid #c084fc; padding: 20px; max-height: 80vh; overflow-y: auto; position: relative; }
+        .close-btn { position: absolute; top: 15px; left: 15px; background: none; border: none; color: #ff4d4d; font-size: 1.5em; cursor: pointer; }
+        .modal-title { font-size: 1.8em; margin-bottom: 5px; color: #c084fc; }
+        .modal-desc { color: #8b949e; margin-bottom: 20px; font-size: 0.9em; }
+        .script-item { background-color: #1a1528; border: 1px solid #2d2d3f; border-radius: 10px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
         .script-item span { font-weight: bold; }
-        .copy-btn {
-            background: linear-gradient(to right, #a855f7, #7e22ce);
-            color: white; border: none;
-            padding: 8px 15px; border-radius: 5px;
-            cursor: pointer; font-weight: bold;
-            transition: 0.3s;
-        }
+        .copy-btn { background: linear-gradient(to right, #a855f7, #7e22ce); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .copy-btn:hover { transform: scale(1.05); }
     </style>
 </head>
@@ -177,36 +45,30 @@
     </header>
 
     <main>
-        <div class="map-grid" id="mapGrid">
-            <!-- سيتم توليد المابات هنا تلقائياً بواسطة الجافاسكربت -->
-        </div>
+        <div class="map-grid" id="mapGrid"></div>
     </main>
 
-    <!-- النافذة المنبثقة -->
     <div class="modal" id="mapModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
             <h2 class="modal-title" id="modalTitle"></h2>
             <p class="modal-desc" id="modalDesc"></p>
-            <div id="modalScripts">
-                <!-- السكربتات تظهر هنا -->
-            </div>
+            <div id="modalScripts"></div>
         </div>
     </div>
 
     <script>
-        // 🛑 هنا قاعدة البيانات حقك 🛑
-        // تقدر تنسخ بلوك { ... } كامل وتضيف ماب جديد
+        // 🛑 هذا هو المكان اللي تتحكم فيه بالمابات والسكربتات 🛑
         const mapsDatabase = [
             {
                 id: "duban",
                 name: "صيد الضبان",
                 desc: "لعبة صيد وتجارة الضبان في الصحراء",
-                famous: true,
+                famous: true, // true تعني أنه سيظهر عليه شارة (مشهور)
                 scripts: [
                     {
-                        title: "سكربت Vortex (Auto Farm)",
-                        // هنا تحط النص المشفر بـ Base64
+                        title: "سكربت Auto Farm",
+                        // 👇 هنا تحط النص المشفر حق السكربت 👇
                         code: "cHJpbnQoItmF2LHZhtio2KciKQ==" 
                     }
                 ]
@@ -219,105 +81,56 @@
                 scripts: [
                     {
                         title: "سكربت Redz Hub",
-                        code: "cHJpbnQoItmF2LHZhtio2KciKQ=="
-                    },
-                    {
-                        title: "سكربت Hydrogen",
-                        code: "cHJpbnQoItmF2LHZhtio2KciKQ=="
-                    }
-                ]
-            },
-            {
-                id: "pet-sim",
-                name: "Pet Simulator 99",
-                desc: "لعبة جمع الحيوانات الأليفة",
-                famous: true,
-                scripts: [
-                    {
-                        title: "سكربت Auto Farm & Dupe",
-                        code: "cHJpbnQoItmF2LHZhtio2KciKQ=="
-                    }
-                ]
-            },
-            {
-                id: "random-map",
-                name: "ماب غير مشهور (مثال)",
-                desc: "هذا الماب ما يعرفه أحد بس فيه سكربت",
-                famous: false,
-                scripts: [
-                    {
-                        title: "سكربت مخصص",
-                        code: "cHJpbnQoItmF2LHZhtio2KciKQ=="
+                        code: "cHJpbnQoItmF2LHZhtio2KciKQ==" 
                     }
                 ]
             }
         ];
 
-        // دالة لعرض المابات في الصفحة
+        // كود التشغيل (لا تعدل عليه)
         function displayMaps(maps) {
             const grid = document.getElementById('mapGrid');
-            grid.innerHTML = ''; // تفريغ القائمة
-            
+            grid.innerHTML = ''; 
             if(maps.length === 0) {
                 grid.innerHTML = '<p style="text-align:center; width:100%; color:#8b949e;">لا يوجد ماب بهذا الاسم.</p>';
                 return;
             }
-
             maps.forEach(map => {
                 const card = document.createElement('div');
                 card.className = 'map-card';
                 card.onclick = () => openModal(map.id);
-                
                 const badge = map.famous ? '<span class="badge">مشهور 🔥</span>' : '';
-                
-                card.innerHTML = `
-                    ${badge}
-                    <h3>${map.name}</h3>
-                    <p>${map.desc}</p>
-                `;
+                card.innerHTML = `${badge}<h3>${map.name}</h3><p>${map.desc}</p>`;
                 grid.appendChild(card);
             });
         }
 
-        // دالة البحث
         function searchMaps() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const filteredMaps = mapsDatabase.filter(map => 
-                map.name.toLowerCase().includes(searchTerm)
-            );
+            const filteredMaps = mapsDatabase.filter(map => map.name.toLowerCase().includes(searchTerm));
             displayMaps(filteredMaps);
         }
 
-        // فتح النافذة المنبثقة
         function openModal(mapId) {
             const map = mapsDatabase.find(m => m.id === mapId);
             if(!map) return;
-
             document.getElementById('modalTitle').innerText = map.name;
             document.getElementById('modalDesc').innerText = map.desc;
-            
             const scriptsContainer = document.getElementById('modalScripts');
             scriptsContainer.innerHTML = '';
-
             map.scripts.forEach((script, index) => {
                 const scriptDiv = document.createElement('div');
                 scriptDiv.className = 'script-item';
-                scriptDiv.innerHTML = `
-                    <span>${script.title}</span>
-                    <button class="copy-btn" onclick="copyScript('${script.code}')">نسخ <i class="fas fa-copy"></i></button>
-                `;
+                scriptDiv.innerHTML = `<span>${script.title}</span><button class="copy-btn" onclick="copyScript('${script.code}')">نسخ <i class="fas fa-copy"></i></button>`;
                 scriptsContainer.appendChild(scriptDiv);
             });
-
             document.getElementById('mapModal').style.display = 'flex';
         }
 
-        // إغلاق النافذة
         function closeModal() {
             document.getElementById('mapModal').style.display = 'none';
         }
 
-        // نسخ السكربت (فك التشفير ثم نسخ)
         function copyScript(encodedCode) {
             try {
                 const decodedCode = atob(encodedCode);
@@ -329,15 +142,10 @@
             }
         }
 
-        // تشغيل العرض عند فتح الصفحة
         window.onload = () => displayMaps(mapsDatabase);
-
-        // إغلاق النافذة عند الضغط في الخارج
         window.onclick = function(event) {
             const modal = document.getElementById('mapModal');
-            if (event.target == modal) {
-                closeModal();
-            }
+            if (event.target == modal) closeModal();
         }
     </script>
 </body>
